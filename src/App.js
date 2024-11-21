@@ -6,6 +6,34 @@ import logo from './Logo.png';
 import fisherman from './FISHERMAN.png';
 import title from './Title.png';
 import Lake from './Lake.png';
+import ReactDOM from 'react-dom';
+import { db } from "./firebase-config.js";
+
+// Import necessary Firestore functions
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <AppWrapper />
+  </React.StrictMode>,
+  document.getElementById('root') // This is the id of the root element in your index.html
+);
+// Function to add a document to the "users" collection
+const addData = async () => {
+    try {
+        // Reference the "users" collection and add a new document
+        await addDoc(collection(db, "users"), {
+            name: "John Doe",
+            email: "johndoe@example.com"
+        });
+        console.log("Document added successfully!");
+    } catch (error) {
+        console.error("Error adding document: ", error);
+    }
+};
+
+// Call the function to add data
+addData();
 
 function Login() {
   const [email, setEmail] = useState('');
