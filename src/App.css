@@ -9,11 +9,12 @@
 .header-bar {
   display: flex;
   align-items: center;
-  padding: 16px 10px; 
-  background-color: #044573; 
+  padding: 16px 10px;
+  background-color: #044573;
   color: white;
-  max-width: 100%; 
+  max-width: 100%;
   box-sizing: border-box;
+  justify-content: flex-start; 
 }
 
 .header-logo {
@@ -24,7 +25,8 @@
 .header-bar h1 {
   font-size: 20px;
   font-weight: bold;
-  margin: 0; 
+  margin: 0;
+  text-align: left; 
 }
 
 .header-bar-2 {
