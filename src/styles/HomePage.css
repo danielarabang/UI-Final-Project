@@ -1,0 +1,56 @@
+.home-page {
+    text-align: center;
+  }
+  
+  .header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4caf50;
+    padding: 10px;
+  }
+  
+  .header-logo {
+    height: 40px;
+  }
+  
+  .picture-container {
+    position: relative;
+  }
+  
+  .lake-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+  }
+  
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .start-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .contact-us {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .contact-icons a {
+    margin: 0 10px;
+    color: inherit;
+    font-size: 24px;
+  }
+  

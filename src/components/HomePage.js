@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';  
-import './App.css';
-import logo from './assets/Logo.png';
-import Lake from './assets/Lake.png';
+import '../styles/HomePage.css';
+import logo from '../assets/Logo.png';
+import Lake from '../assets/Lake.png';
 
 function HomePage() {
   const [menuOpen] = useState(false);

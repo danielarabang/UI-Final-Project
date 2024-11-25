@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './App.css';
-import logo from './assets/Logo.png';
-import title from './assets/Title.png';
-import fisherman from './assets/FISHERMAN.png';
 
-function Login() {
+//Styles & Assets
+import '../styles/SignUp.css';
+import logo from '../assets/Logo.png';
+import title from '../assets/Title.png';
+import fisherman from '../assets/FISHERMAN.png';
+
+function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirm, setConfirm] = useState('');
   const navigate = useNavigate();
 
-  const handleLoginSubmit = (event) => {
+  const handleSignupSubmit = (event) => {
     event.preventDefault();
 
-    const storedAccount = JSON.parse(localStorage.getItem('account'));
-
-    if (storedAccount && storedAccount.email === email && storedAccount.password === password) {
-      alert('Login successful!');
-      navigate('/home');
+    if (password === confirm) {
+      const account = { email, password };
+      localStorage.setItem('account', JSON.stringify(account)); 
+      alert('Your account has been created successfully!');
+      navigate('/login'); 
     } else {
-      alert('No account found with these credentials. Please sign up first.');
+      alert('Passwords do not match. Please try again.');
     }
   };
 
-  const redirectToSignup = () => {
-    navigate('/signup');
+  const redirectToLogin = () => {
+    navigate('/');
   };
 
   return (
@@ -37,7 +40,7 @@ function Login() {
       <div className="content-container">
         <div className="login-section">
           <div className="login-form">
-            <form onSubmit={handleLoginSubmit}>
+            <form onSubmit={handleSignupSubmit}>
               <label>Email ID</label>
               <input 
                 type="email" 
@@ -52,12 +55,18 @@ function Login() {
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} 
               />
-              <button type="submit" className="login-button">Login</button>
-              <p className="forgot-password">Forgot Password?</p>
+              <label>Confirm Password</label>
+              <input 
+                type="password" 
+                placeholder="Confirm your password" 
+                value={confirm} 
+                onChange={(e) => setConfirm(e.target.value)} 
+              />
+              <button type="submit" className="login-button">Create an Account</button>
             </form>
             <p className="signup-text">
-              No account yet? 
-              <span onClick={redirectToSignup} className="signup-link">Sign Up</span>
+              Already have an account? 
+              <span onClick={redirectToLogin} className="login-link">Log In</span>
             </p>
           </div>
         </div>
@@ -73,4 +82,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;

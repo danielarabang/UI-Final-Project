@@ -1,31 +1,30 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './App.css';
-import logo from './assets/Logo.png';
-import title from './assets/Title.png';
-import fisherman from './assets/FISHERMAN.png';
+import '../styles/Login.css';
+import logo from '../assets/Logo.png';
+import title from '../assets/Title.png';
+import fisherman from '../assets/FISHERMAN.png';
 
-function SignupPage() {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirm, setConfirm] = useState('');
   const navigate = useNavigate();
 
-  const handleSignupSubmit = (event) => {
+  const handleLoginSubmit = (event) => {
     event.preventDefault();
 
-    if (password === confirm) {
-      const account = { email, password };
-      localStorage.setItem('account', JSON.stringify(account)); 
-      alert('Your account has been created successfully!');
-      navigate('/login'); 
+    const storedAccount = JSON.parse(localStorage.getItem('account'));
+
+    if (storedAccount && storedAccount.email === email && storedAccount.password === password) {
+      alert('Login successful!');
+      navigate('/home');
     } else {
-      alert('Passwords do not match. Please try again.');
+      alert('No account found with these credentials. Please sign up first.');
     }
   };
 
-  const redirectToLogin = () => {
-    navigate('/');
+  const redirectToSignup = () => {
+    navigate('/signup');
   };
 
   return (
@@ -38,7 +37,7 @@ function SignupPage() {
       <div className="content-container">
         <div className="login-section">
           <div className="login-form">
-            <form onSubmit={handleSignupSubmit}>
+            <form onSubmit={handleLoginSubmit}>
               <label>Email ID</label>
               <input 
                 type="email" 
@@ -53,18 +52,12 @@ function SignupPage() {
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} 
               />
-              <label>Confirm Password</label>
-              <input 
-                type="password" 
-                placeholder="Confirm your password" 
-                value={confirm} 
-                onChange={(e) => setConfirm(e.target.value)} 
-              />
-              <button type="submit" className="login-button">Create an Account</button>
+              <button type="submit" className="login-button">Login</button>
+              <p className="forgot-password">Forgot Password?</p>
             </form>
             <p className="signup-text">
-              Already have an account? 
-              <span onClick={redirectToLogin} className="login-link">Log In</span>
+              No account yet? 
+              <span onClick={redirectToSignup} className="signup-link">Sign Up</span>
             </p>
           </div>
         </div>
@@ -80,4 +73,4 @@ function SignupPage() {
   );
 }
 
-export default SignupPage;
+export default Login;

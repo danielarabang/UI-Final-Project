@@ -1,0 +1,10 @@
+/* Reuse styles from Login.css*/
+@import './Login.css';
+
+.login-form label {
+  margin-top: 10px;
+}
+
+.login-form input {
+  margin-bottom: 10px;
+}

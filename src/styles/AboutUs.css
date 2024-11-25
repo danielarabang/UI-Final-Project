@@ -1,0 +1,44 @@
+.aboutus-page {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4caf50;
+    padding: 10px;
+  }
+  
+  .header-logo {
+    height: 40px;
+  }
+  
+  .details-section {
+    margin: 20px 0;
+  }
+  
+  .team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .person-container {
+    width: 200px;
+    text-align: center;
+  }
+  
+  .person-image img {
+    width: 100%;
+    border-radius: 50%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .person-info h2 {
+    margin: 10px 0 5px;
+  }
+  

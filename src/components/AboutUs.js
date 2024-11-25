@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './App.css';
-import logo from './assets/Logo.png'; 
+import '../styles/AboutUs.css';
+import logo from '../assets/Logo.png'; 
 
 function AboutUs() {
   const [menuOpen, setMenuOpen] = useState(false);

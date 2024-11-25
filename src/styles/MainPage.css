@@ -1,0 +1,44 @@
+.main-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4caf50;
+    padding: 10px;
+  }
+  
+  .header-logo {
+    height: 40px;
+  }
+  
+  .menu-list {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .menu-list li {
+    cursor: pointer;
+  }
+  
+  .sidebar {
+    background-color: #f4f4f4;
+    padding: 15px;
+    width: 300px;
+  }
+  
+  .parameter-list label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .map-container {
+    flex: 1;
+    position: relative;
+  }
+  
