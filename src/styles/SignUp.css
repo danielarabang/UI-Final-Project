@@ -8,3 +8,13 @@
 .login-form input {
   margin-bottom: 10px;
 }
+
+.login-link {
+  color: blue; 
+  cursor: pointer; 
+  text-decoration: underline;
+}
+
+.login-link:hover {
+  color: darkblue; 
+}

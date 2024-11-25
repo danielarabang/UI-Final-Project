@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState, useMemo, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import logo from "../assets/Logo.png";
+
+import logo from "../assets/LogoSilver.png";
 import "../styles/MainPage.css";
 
-function MainPage({ fetchAlgalData, trainedModel }) {
+function MainPage({ fetchAlgalData }) {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
+  const navigate = useNavigate();
   const [algalData, setAlgalData] = useState(null); 
   const [parameters, setParameters] = useState({
     tss: false,
@@ -16,7 +18,7 @@ function MainPage({ fetchAlgalData, trainedModel }) {
     phytoplankton: false,
   });
 
-  //Water station coordinates
+  // Water station coordinates
   const stations = useMemo(() => [
     { id: "1", longitude: 121.174044303934, latitude: 14.4170143281305, label: "Station 1" },
     { id: "2", longitude: 121.336441311657, latitude: 14.2719829588474, label: "Station 2" },
@@ -35,6 +37,13 @@ function MainPage({ fetchAlgalData, trainedModel }) {
     { id: "15", longitude: 121.414493346243, latitude: 14.3250210743066, label: "Station 15" },
   ], []); 
 
+  // Sample data for turbidity
+  const turbidityData = useMemo(() => [
+    { longitude: 121.174044303934, latitude: 14.4170143281305, turbidity: 10 },
+    { longitude: 121.336441311657, latitude: 14.2719829588474, turbidity: 15 },
+    { longitude: 121.280191611938, latitude: 14.3857986672338, turbidity: 500 },
+  ], []);
+
   const handleStationClick = useCallback((station) => {
     // Simulate fetching new algal bloom data for the clicked station
     const newAlgalData = fetchAlgalData(station.id);
@@ -46,10 +55,10 @@ function MainPage({ fetchAlgalData, trainedModel }) {
 
     mapboxgl.accessToken = 'pk.eyJ1Ijoic29saWNpemluZyIsImEiOiJjbTNkeGtuMzQwODI2MmpxeW1kazVlOW9wIn0.zp69tDjjpE_vYvyjxKnuNA';
 
-    //Bounding box of Laguna Lake
+    // Bounding box of Laguna Lake
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/satellite-streets-v11",
+      style: "mapbox://styles/mapbox/streets-v11",
       center: [121.23, 14.2], 
       zoom: 10,
       pitch: 45,
@@ -60,83 +69,99 @@ function MainPage({ fetchAlgalData, trainedModel }) {
     });
 
     mapRef.current.on("load", () => {
-      // Only add the source if it doesn't exist
-      if (!mapRef.current.getSource("mapbox-dem")) {
-        mapRef.current.addSource("mapbox-dem", {
-          type: "raster-dem",
-          url: "mapbox://mapbox.terrain-rgb",
-          tileSize: 512,
-          maxzoom: 15,
+      // Add turbidity heatmap layer
+      if (parameters.turbidity) {
+        mapRef.current.addSource("turbidity-data", {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: turbidityData.map((point) => ({
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: [point.longitude, point.latitude],
+              },
+              properties: {
+                turbidity: point.turbidity,
+              },
+            })),
+          },
         });
 
-        mapRef.current.setTerrain({ source: "mapbox-dem", exaggeration: 1.5 });
-      }
-
-      // Add the water layer if it doesn't exist
-      if (!mapRef.current.getLayer("water-blue")) {
         mapRef.current.addLayer({
-          id: "water-blue",
-          type: "fill",
-          source: "composite",
-          "source-layer": "water",
+          id: "turbidity-heatmap",
+          type: "heatmap",
+          source: "turbidity-data",
+          maxzoom: 15,
           paint: {
-            "fill-color": "#3bb2d0",
-            "fill-opacity": 0.8,
+            "heatmap-weight": [
+              "interpolate",
+              ["linear"],
+              ["get", "turbidity"],
+              0, 0,
+              50, 1,
+            ],
+            "heatmap-intensity": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              5, 1,
+              10, 3,
+            ],
+            "heatmap-color": [
+              "interpolate",
+              ["linear"],
+              ["heatmap-density"],
+              0, "rgba(0,0,255,0)",
+              0.1, "rgb(0,0,255)",
+              0.3, "rgb(0,255,0)",
+              0.5, "rgb(255,255,0)",
+              0.7, "rgb(255,0,0)",
+            ],
+            "heatmap-radius": 20,
+            "heatmap-opacity": 0.8,
           },
         });
       }
-    });
 
-    //Markers for each water station
-    stations.forEach((station) => {
-      const { latitude, longitude, label } = station;
-    
-      if (latitude >= -90 && latitude <= 90 && longitude >= -180 && longitude <= 180) {
-        // Create a new marker
-        const marker = new mapboxgl.Marker({
-          color: "#FF0000", 
-          draggable: true,
-        })
-          .setLngLat([longitude, latitude])
-          .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(label)) // Add a popup with the station label
-          .addTo(mapRef.current);
-    
-        // Add click event listener to the marker
-        marker.getElement().addEventListener("click", () => handleStationClick(station));
-      } else {
-        console.error(`Invalid coordinates for ${station.label}: latitude=${latitude}, longitude=${longitude}`);
-      }
+      // Markers for each water station
+      stations.forEach((station) => {
+        const { latitude, longitude, label } = station;
+
+        if (latitude >= -90 && latitude <= 90 && longitude >= -180 && longitude <= 180) {
+          const marker = new mapboxgl.Marker({
+            color: "#FF0000", 
+            draggable: false,
+          })
+            .setLngLat([longitude, latitude])
+            .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(label)) 
+            .addTo(mapRef.current);
+
+          marker.getElement().addEventListener("click", () => handleStationClick(station));
+        }
+      });
     });
-    
 
     return () => mapRef.current.remove();
-  }, [handleStationClick, stations]);
+  }, [handleStationClick, stations, turbidityData, parameters]);
+
+  const handleSidebarHeaderClick = () => {
+    navigate("/home");
+  };
 
   const handleParameterChange = (e) => {
     const { name, checked } = e.target;
     setParameters((prev) => ({ ...prev, [name]: checked }));
-
-    // Simulate fetching data from a trained model
-    const updatedData = trainedModel(parameters);
-    setAlgalData(updatedData);
   };
 
   return (
     <div className="main-page">
-      <header className="header-bar">
-        <img src={logo} className="header-logo" alt="ALGSAT logo" />
-        <h1>~ALGSAT</h1>
-        <nav className="menu">
-          <ul className="menu-list">
-            <li><Link to="/home">Home Page</Link></li>
-            <li><Link to="/about-us">About Us</Link></li>
-            <li><Link to="/">Logout</Link></li>
-          </ul>
-        </nav>
-      </header>
-
       <div className="main-content">
         <aside className="sidebar">
+          <div className="sidebar-header" onClick={handleSidebarHeaderClick}>
+            <img src={logo} className="sidebar-logo" alt="ALGSAT logo" />
+            <h1 className="sidebar-title">~ALGSAT</h1>
+          </div>
           <h2>Parameters</h2>
           <div className="parameter-list">
             <label>
@@ -157,7 +182,6 @@ function MainPage({ fetchAlgalData, trainedModel }) {
             <p>{algalData ? `${algalData.coverage} km²` : "Select a station or parameter"}</p>
           </div>
         </aside>
-
         <div className="map-container" style={{ flex: 1, height: "100vh" }}>
           <div ref={mapContainerRef} style={{ width: "100%", height: "100%" }}></div>
         </div>

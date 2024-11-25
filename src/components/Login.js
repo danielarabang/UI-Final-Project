@@ -57,7 +57,7 @@ function Login() {
             </form>
             <p className="signup-text">
               No account yet? 
-              <span onClick={redirectToSignup} className="signup-link">Sign Up</span>
+              <span onClick={redirectToSignup} className="signup-link"> Sign Up</span>
             </p>
           </div>
         </div>

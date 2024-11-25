@@ -66,7 +66,7 @@ function SignUp() {
             </form>
             <p className="signup-text">
               Already have an account? 
-              <span onClick={redirectToLogin} className="login-link">Log In</span>
+              <span onClick={redirectToLogin} className="login-link"> Log In</span>
             </p>
           </div>
         </div>
