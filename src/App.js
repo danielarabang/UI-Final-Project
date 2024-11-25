@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
@@ -395,11 +396,23 @@ function AboutUs() {
 
 // AppWrapper Component
 export default function AppWrapper() {
+=======
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './Login';
+import SignupPage from './SignupPage';
+import HomePage from './HomePage';
+import MainPage from './MainPage';
+import AboutUs from './AboutUs'; 
+
+function App() {
+>>>>>>> 255ae75 (Updated code -Mav)
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignupPage />} />
+<<<<<<< HEAD
         <Route path="/home" element={<HomePage />} /> 
         <Route path="/main" element={<MainPage />} /> 
         <Route path="/about-us" element={<AboutUs />} /> 
@@ -407,3 +420,14 @@ export default function AppWrapper() {
     </Router>
   );
 }
+=======
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/main" element={<MainPage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+>>>>>>> 255ae75 (Updated code -Mav)

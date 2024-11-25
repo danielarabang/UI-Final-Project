@@ -4,10 +4,17 @@
   "private": true,
   "dependencies": {
     "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
+<<<<<<< HEAD
+=======
+    "@mediapipe/tasks-vision": "^0.10.18",
+    "@react-three/drei": "^9.117.3",
+    "@react-three/fiber": "^8.17.10",
+>>>>>>> 255ae75 (Updated code -Mav)
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^11.0.2",
+<<<<<<< HEAD
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-native-web": "^0.19.13",
@@ -19,6 +26,22 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+=======
+    "mapbox-gl": "^3.8.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
+    "react-native-web": "^0.19.13",
+    "react-router-dom": "^6.28.0",
+    "react-scripts": "^5.0.1",
+    "three": "^0.170.0",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+>>>>>>> 255ae75 (Updated code -Mav)
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -38,5 +61,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
+=======
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "file-loader": "^6.2.0",
+    "react-app-rewired": "^2.2.1"
+>>>>>>> 255ae75 (Updated code -Mav)
   }
 }
