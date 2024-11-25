@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
-import logo from './Logo.png'; // Make sure you have the correct path to your logo
+import logo from './assets/Logo.png'; 
 
 function AboutUs() {
   const [menuOpen, setMenuOpen] = useState(false);

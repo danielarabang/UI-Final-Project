@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useMemo, useCallback } from "react"
 import { Link } from "react-router-dom";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import logo from "./Logo.png";
+import logo from "./assets/Logo.png";
 import "./App.css";
 
 function MainPage({ fetchAlgalData, trainedModel }) {

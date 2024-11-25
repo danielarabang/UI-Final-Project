@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
-import logo from './Logo.png';
-import title from './Title.png';
-import fisherman from './FISHERMAN.png';
+import logo from './assets/Logo.png';
+import title from './assets/Title.png';
+import fisherman from './assets/FISHERMAN.png';
 
 function Login() {
   const [email, setEmail] = useState('');
