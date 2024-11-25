@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';  // Import useNavigate here
+import { Link, useNavigate } from 'react-router-dom';  
 import './App.css';
 import logo from './assets/Logo.png';
 import Lake from './assets/Lake.png';
 
 function HomePage() {
   const [menuOpen] = useState(false);
-  const navigate = useNavigate();  // Now useNavigate works
+  const navigate = useNavigate();  
 
   const handleStartMonitoring = () => {
     navigate('/main');
