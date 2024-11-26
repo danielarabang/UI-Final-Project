@@ -12,9 +12,9 @@ function MainPage() {
   const navigate = useNavigate();
   const [parameters, setParameters] = useState({
     tss: false,
-    chlorophyll: false,
-    turbidity: false,
-    phytoplankton: false,
+    nitrate: false,
+    phosphate: false,
+    dissolvedOxygen: false,
   });
   const [exaggeration, setExaggeration] = useState(1.5); // default exaggeration value
 
@@ -37,22 +37,22 @@ function MainPage() {
     { id: "15", longitude: 121.414493346243, latitude: 14.3250210743066, label: "Station 15" },
   ], []);
 
-  const turbidityData = useMemo(() => [
-    { longitude: 121.174044303934, latitude: 14.4170143281305, turbidity: 10 },
-    { longitude: 121.336441311657, latitude: 14.2719829588474, turbidity: 15 },
-    { longitude: 121.280191611938, latitude: 14.3857986672338, turbidity: 500 },
+  const dissolvedOxygenData = useMemo(() => [
+    { longitude: 121.174044303934, latitude: 14.4170143281305, do: 10 },
+    { longitude: 121.336441311657, latitude: 14.2719829588474, do: 15 },
+    { longitude: 121.280191611938, latitude: 14.3857986672338, do: 500 },
   ], []);
 
   const phosphateData = [
-    { longitude: 121.174044303934, latitude: 14.4170143281305, chlorophyll: 10 },
-    { longitude: 121.336441311657, latitude: 14.2719829588474, chlorophyll: 15 },
-    { longitude: 121.280191611938, latitude: 14.3857986672338, chlorophyll: 50 },
+    { longitude: 121.174044303934, latitude: 14.4170143281305, phosphate: 10 },
+    { longitude: 121.336441311657, latitude: 14.2719829588474, phosphate: 15 },
+    { longitude: 121.280191611938, latitude: 14.3857986672338, phosphate: 50 },
   ];
 
-  const chlorophyllData = [
-  { longitude: 121.174044303934, latitude: 14.4170143281305, chlorophyll: 10 },
-  { longitude: 121.336441311657, latitude: 14.2719829588474, chlorophyll: 15 },
-  { longitude: 121.280191611938, latitude: 14.3857986672338, chlorophyll: 50 },
+  const nitrateData = [
+  { longitude: 121.174044303934, latitude: 14.4170143281305, nitrate: 10 },
+  { longitude: 121.336441311657, latitude: 14.2719829588474, nitrate: 15 },
+  { longitude: 121.280191611938, latitude: 14.3857986672338, nitrate: 50 },
 ];
 
   const tssData = [
@@ -152,8 +152,8 @@ function MainPage() {
       };
 
       // Example of adding turbidity layer if enabled
-      if (parameters.turbidity) {
-        addLayer("turbidity-data", turbidityData, ["rgba(0,0,255,0)", "rgb(0,0,255)", "rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"]);
+      if (parameters.phosphate) {
+        addLayer("phosphate-data", phosphateData, ["rgba(0,0,255,0)", "rgb(0,0,255)", "rgb(0,255,0)", "rgb(255,255,0)", "rgb(255,0,0)"]);
       }
 
       // Add markers for stations
@@ -170,7 +170,7 @@ function MainPage() {
     });
 
     return () => mapRef.current.remove();
-  }, [stations, parameters, turbidityData]); // No exaggeration dependency here
+  }, [stations, parameters, phosphateData]); // No exaggeration dependency here
 
   const handleExaggerationChange = (e) => {
     const newExaggeration = parseFloat(e.target.value);
@@ -219,7 +219,7 @@ function MainPage() {
               Nitrate
             </label>
             <label>
-              <input type="checkbox" name="DO" checked={parameters.DO} onChange={handleParameterChange} />
+              <input type="checkbox" name="DO" checked={parameters.do} onChange={handleParameterChange} />
               Dissolved Oxygen
             </label>
             <label>
