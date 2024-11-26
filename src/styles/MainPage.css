@@ -28,7 +28,7 @@
 
 .sidebar {
   color: #fff;
-  width: 300px; /*Increase Width*/
+  width: 300px; 
   padding-left: 20px;
   height: 100vh;
   background-image: linear-gradient(30deg , #0048bd, #44a7fd);

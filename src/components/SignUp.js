@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-//Styles & Assets
+// Styles & Assets
 import '../styles/SignUp.css';
 import logo from '../assets/Logo.png';
 import title from '../assets/Title.png';
@@ -20,14 +20,14 @@ function SignUp() {
       const account = { email, password };
       localStorage.setItem('account', JSON.stringify(account)); 
       alert('Your account has been created successfully!');
-      navigate('/login'); 
+      navigate('/');  // Redirect to the login page after successful signup
     } else {
       alert('Passwords do not match. Please try again.');
     }
   };
 
   const redirectToLogin = () => {
-    navigate('/');
+    navigate('/');  // Ensure this navigates to the login page
   };
 
   return (
