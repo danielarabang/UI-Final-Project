@@ -9,11 +9,12 @@
 .header-bar {
   display: flex;
   align-items: center;
-  padding: 16px 10px; 
-  background-color: #044573; 
+  padding: 16px 10px;
+  background-color: #044573;
   color: white;
-  max-width: 100%; 
+  max-width: 100%;
   box-sizing: border-box;
+  justify-content: flex-start; 
 }
 
 .header-logo {
@@ -24,7 +25,8 @@
 .header-bar h1 {
   font-size: 20px;
   font-weight: bold;
-  margin: 0; 
+  margin: 0;
+  text-align: left; 
 }
 
 .header-bar-2 {
@@ -456,3 +458,59 @@ body {
   font-size: 16px;
   color: #555;
 }
+
+.main-content1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.model-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Set an explicit height for the map */
+}
+
+.center-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 24px;
+  color: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  z-index: 1; /* Ensure button is above the map */
+}
+
+.station-marker {
+  width: 12px;
+  height: 12px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-right: 1px solid #ccc;
+}
+

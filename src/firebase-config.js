@@ -1,6 +1,7 @@
 // firebase-config.js
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';  // Correct import for auth in v9+
+import { getFirestore } from 'firebase/firestore';  // Correct import for Firestore in v9+
 
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
@@ -13,5 +14,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
-export { db };
+export { db, auth };  // Export both db and auth for use in other components

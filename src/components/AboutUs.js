@@ -4,11 +4,7 @@ import '../styles/AboutUs.css';
 import logo from '../assets/Logo.png'; 
 
 function AboutUs() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen); // Toggle the menuOpen state
-  };
+  const [menuOpen] = useState(false);
 
   return (
     <div className="aboutus-page">
@@ -17,9 +13,6 @@ function AboutUs() {
         <img src={logo} className="header-logo" alt="ALGSAT logo" />
         <h1>~ALGSAT</h1>
         {/* Navigation Menu */}
-        <button onClick={toggleMenu} className="menu-toggle">
-          ☰ {/* You can use a hamburger icon or any symbol for the menu */}
-        </button>
         <nav className={`menu ${menuOpen ? 'active' : ''}`}>
           <ul className="menu-list">
             <li><Link to="/home">Home Page</Link></li>
