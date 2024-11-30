@@ -1,0 +1,147 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  padding: 16px 10px;
+  background-color: #044573;
+  color: white;
+  max-width: 100%;
+  box-sizing: border-box;
+  justify-content: flex-start; 
+}
+
+.header-logo {
+  width: 40px;
+  margin-right: 10px; 
+}
+
+.header-bar h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  text-align: left; 
+}
+
+.content-container {
+  display: flex;
+  flex: 1;
+}
+
+.login-section {
+  background-color: #C9E0EB;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-form {
+  background-color: #e1ebf5;
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-form label {
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.login-button {
+  background-color: #004080;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.forgot-password {
+  margin-top: 1px;
+  margin-left: 200px;
+  font-size: 10px;
+  color: #004080;
+}
+
+.signup-text {
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.signup-link {
+  color: #0066cc;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.info-section {
+  flex: 1;
+  background-color: #DEE8F1;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.illustration {
+  margin-top: auto;
+  width: 100%;
+}
+
+.illustration img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.google-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4285F4;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.google-login-btn img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.google-login-btn:hover {
+  background-color: #357ae8;
+}
