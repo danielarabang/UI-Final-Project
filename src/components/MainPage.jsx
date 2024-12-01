@@ -262,8 +262,8 @@ const addParameterLayer = useCallback((name, data, color, property) => {
       ],
       "heatmap-radius": {
         stops: [
-          [1, 5], //At zoom level 1, the radius is 5 pixels.
-          [7, 5], //At zoom level 7, the radius is 4 pixels.
+          [4, 5], //At zoom level 1, the radius is 5 pixels.
+          [7, 6], //At zoom level 7, the radius is 4 pixels.
         ],
       },
       "heatmap-opacity": {
@@ -352,7 +352,8 @@ const addParameterLayer = useCallback((name, data, color, property) => {
                 name="phosphate"
                 checked={parameters.phosphate}
                 onChange={handleParameterChange}
-              /> Phosphate
+              />{" "}
+              Phosphate
             </label>
             <label>
               <input
@@ -360,7 +361,8 @@ const addParameterLayer = useCallback((name, data, color, property) => {
                 name="nitrate"
                 checked={parameters.nitrate}
                 onChange={handleParameterChange}
-              /> Nitrate
+              />{" "}
+              Nitrate
             </label>
             <label>
               <input
@@ -368,7 +370,8 @@ const addParameterLayer = useCallback((name, data, color, property) => {
                 name="dissolvedOxygen"
                 checked={parameters.dissolvedOxygen}
                 onChange={handleParameterChange}
-              /> Dissolved Oxygen
+              />{" "}
+              Dissolved Oxygen
             </label>
             <label>
               <input
@@ -376,7 +379,8 @@ const addParameterLayer = useCallback((name, data, color, property) => {
                 name="tss"
                 checked={parameters.tss}
                 onChange={handleParameterChange}
-              /> TSS
+              />{" "}
+              TSS
             </label>
             <label>
               <input
@@ -384,7 +388,8 @@ const addParameterLayer = useCallback((name, data, color, property) => {
                 name="algalBloom"
                 checked={parameters.algalBloom}
                 onChange={handleParameterChange}
-              /> Algal Bloom
+              />{" "}
+              Algal Bloom
             </label>
           </div>
           {parameters.algalBloom && (
@@ -396,13 +401,16 @@ const addParameterLayer = useCallback((name, data, color, property) => {
                     <h5>Action Plan</h5>
                     <ul>
                       <li>
-                        Notify local authorities to implement water treatment measures.
+                        Notify local authorities to implement water treatment
+                        measures.
                       </li>
                       <li>
-                        Restrict access to the affected area to prevent health risks.
+                        Restrict access to the affected area to prevent health
+                        risks.
                       </li>
                       <li>
-                        Increase water quality monitoring frequency for the station.
+                        Increase water quality monitoring frequency for the
+                        station.
                       </li>
                       <li>
                         Deploy aeration equipment to mitigate algal bloom effects.
@@ -418,6 +426,48 @@ const addParameterLayer = useCallback((name, data, color, property) => {
         {/* Map Container */}
         <div className="map-container">
           <div ref={mapContainerRef} style={{ width: "100%", height: "100vh" }} />
+  
+          {/* Mapbox Legend na binase ko sa current weights*/}
+          <div id="legend" className="mapbox-legend">
+            <h5>Algal Bloom Index</h5>
+            <div>
+              <div className="legend-item">
+                <span
+                  className="legend-color"
+                  style={{ backgroundColor: "rgb(0, 0, 255)" }}
+                ></span>
+                <span>Low (0-0.2)</span>
+              </div>
+              <div className="legend-item">
+                <span
+                  className="legend-color"
+                  style={{ backgroundColor: "rgb(65, 105, 225)" }}
+                ></span>
+                <span>Moderate (0.2-0.5)</span>
+              </div>
+              <div className="legend-item">
+                <span
+                  className="legend-color"
+                  style={{ backgroundColor: "rgb(0, 255, 0)" }}
+                ></span>
+                <span>High (0.5-0.8)</span>
+              </div>
+              <div className="legend-item">
+                <span
+                  className="legend-color"
+                  style={{ backgroundColor: "rgb(255, 255, 0)" }}
+                ></span>
+                <span>Very High (0.8-1)</span>
+              </div>
+              <div className="legend-item">
+                <span
+                  className="legend-color"
+                  style={{ backgroundColor: "rgb(255, 0, 0)" }}
+                ></span>
+                <span>Extreme (&gt; 1)</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
