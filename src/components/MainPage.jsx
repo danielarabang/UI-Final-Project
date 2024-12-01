@@ -246,7 +246,8 @@ const addParameterLayer = useCallback((name, data, color, property) => {
         "interpolate",
         ["linear"],
         ["heatmap-density"],
-        0, "rgba(0, 0, 255, 0)",
+        //Color intensity (Dark-light) depending sa weight(0-1)
+        0, "rgba(0, 0, 255, 0)", 
         0.2, "rgb(65, 105, 225)",
         0.5, "rgb(0, 255, 0)",
         0.8, "rgb(255, 255, 0)",
@@ -256,13 +257,13 @@ const addParameterLayer = useCallback((name, data, color, property) => {
         "interpolate",
         ["linear"],
         ["get", property],
-        0, 0,
-        1, 1, 
+        0, 0, //If value is 0, then 0 contribution niya sa density
+        1, 1, //If value is 1, then 1 contribution niya sa density
       ],
       "heatmap-radius": {
         stops: [
-          [0, 2],
-          [1, 10],
+          [1, 5], //At zoom level 1, the radius is 5 pixels.
+          [7, 5], //At zoom level 7, the radius is 4 pixels.
         ],
       },
       "heatmap-opacity": {
