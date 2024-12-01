@@ -340,7 +340,7 @@ const addParameterLayer = useCallback((name, data, color, property) => {
       <div className="main-content">
         {/* Sidebar */}
         <div className="sidebar">
-          <div className="sidebar-header"onClick={handleHeaderClick}>
+          <div className="sidebar-header" onClick={handleHeaderClick}>
             <img src={logo} alt="Logo" className="sidebar-logo" />
             <div className="sidebar-title">ALGSAT</div>
           </div>
@@ -389,6 +389,27 @@ const addParameterLayer = useCallback((name, data, color, property) => {
           {parameters.algalBloom && (
             <div>
               <h4>Algal Bloom Coverage: {coveragePercentage}%</h4>
+              {coveragePercentage > 1 && (
+                <div className="action-plan-container">
+                  <div className="action-plan">
+                    <h5>Action Plan</h5>
+                    <ul>
+                      <li>
+                        Notify local authorities to implement water treatment measures.
+                      </li>
+                      <li>
+                        Restrict access to the affected area to prevent health risks.
+                      </li>
+                      <li>
+                        Increase water quality monitoring frequency for the station.
+                      </li>
+                      <li>
+                        Deploy aeration equipment to mitigate algal bloom effects.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>

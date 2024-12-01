@@ -23,10 +23,12 @@
 
 .sidebar {
   color: #fff;
+  overflow-y: auto;
   width: 300px;
   padding-left: 20px;
   height: 100vh;
   background-color: #044573; /* Solid background color */
+  /* box-sizing: border-box; */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
 }
 
@@ -48,11 +50,89 @@
 }
 
 .parameter-list label {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 14px;
+  display: flex; /* Flexbox for alignment */
+  align-items: center; /* Vertical centering of checkbox and text */
+  font-size: 16px; /* Adjust font size */
+  margin-bottom: 10px; /* Spacing between labels */
+  cursor: pointer; /* Pointer cursor on label */
 }
 
 .map-container {
   flex: 1;
+}
+
+/* Action Plan Container */
+.action-plan-container {
+  position: relative;
+  margin-top: 5px;
+  width: 100%; 
+  display: flex;
+  justify-content: center; /* Center-aligns the action plan */
+}
+
+/* Action Plan */
+.action-plan {
+  width: 240px; /* Adjust the width to make it wider */
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: -20px; /* Shifts the container to the left */
+}
+
+.action-plan h5 {
+  margin: 0 0 0.5rem 0; /*Top margin*/
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.action-plan ul {
+  margin: 0;
+  padding: 0;
+  list-style: inside disc;
+}
+
+.action-plan ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Style the checkbox */
+input[type="checkbox"] {
+  display: inline-block; /* Aligns the checkbox and label text */
+  width: 20px; /* Size of the checkbox */
+  height: 20px;
+  appearance: none; /* Removes default styling */
+  border: 2px solid #044573; /* Border color */
+  border-radius: 3px; /* Rounded corners */
+  background-color: #fff; /* Background color */
+  cursor: pointer; /* Pointer cursor */
+  position: relative;
+  margin-right: 10px; /* Spacing between checkbox and text */
+}
+
+/* Fill inside the checkbox */
+input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0); /* Centered and hidden initially */
+  width: 12px;
+  height: 12px;
+  background-color: #044573; /* Fill color */
+  transition: 120ms transform ease-in-out, 120ms background-color ease-in-out;
+  border-radius: 2px; /* Matches the checkbox's shape */
+}
+
+/* When checked, enlarge the fill color */
+input[type="checkbox"]:checked::before {
+  transform: translate(-50%, -50%) scale(1.5); /* Enlarged fill */
+  background-color: #032c4e; /* Optional: Change fill color */
+}
+
+input[type="checkbox"]:hover {
+  border-color: #032c4e; /* Darker border on hover */
 }
