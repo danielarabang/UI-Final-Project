@@ -36,8 +36,10 @@ function MainPage() {
   const calculateCoverage = (data) => {
     const totalPoints = data.length;
     const bloomCount = data.filter((item) => item.value === 1).length;
+    console.log(`Total Points: ${totalPoints}`);
+    console.log(`Bloom Count: ${bloomCount}`);
     const coverage = (bloomCount / totalPoints) * 100;
-    return coverage.toFixed(2); //Rounded to two decimal places
+    return coverage.toFixed(2); 
   };
 
   //Updates coverage whenever naclick yung checkbox
@@ -334,7 +336,7 @@ const addParameterLayer = useCallback((name, data, color, property) => {
       return newParameters;
     });
   };
-
+  
   return (
     <div className="main-page">
       {/* Main Content */}
