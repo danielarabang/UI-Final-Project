@@ -6,11 +6,6 @@
   height: 100vh;
 }
 
-.header-logo {
-  width: 40px; 
-  margin-right: 10px;
-}
-
 .menu {
   display: flex;
   justify-content: flex-end; 
@@ -28,11 +23,11 @@
 
 .sidebar {
   color: #fff;
-  width: 300px; 
+  width: 300px;
   padding-left: 20px;
   height: 100vh;
-  background-image: linear-gradient(30deg , #0048bd, #44a7fd);
-  border-top-right-radius: 80px;
+  background-color: #044573; /* Solid background color */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
 }
 
 .sidebar-header {
@@ -43,7 +38,7 @@
 }
 
 .sidebar-logo {
-  width: 50px;
+  width: 60px;
   margin-right: 10px;
 }
 
