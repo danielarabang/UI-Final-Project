@@ -6,6 +6,7 @@ import MainPage from './components/MainPage';
 import HomePage from './components/HomePage';
 import AboutUs from './components/AboutUs';
 
+
 function App() {
   return (
     <Router>

@@ -1,19 +1,18 @@
-// firebase-config.js
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';  // Correct import for auth in v9+
-import { getFirestore } from 'firebase/firestore';  // Correct import for Firestore in v9+
+// src/firebase-config.js
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  authDomain: "YOUR_AUTH_DOMAIN",
   projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
+  storageBucket: "YOUR_STORAGE_BUCKET",
   messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  appId: "YOUR_APP_ID",
+  measurementId: "YOUR_MEASUREMENT_ID",  // Optional for analytics
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
+const analytics = getAnalytics(app);  // Optional if using analytics
 
-export { db, auth };  // Export both db and auth for use in other components
+export { app, analytics };

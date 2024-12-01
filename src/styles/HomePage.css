@@ -88,7 +88,7 @@
 
 .contact-us {
   padding: 20px;
-  background-color: #dce9f7;
+  background-color: #dee8f1;
   text-align: center;
 }
 
@@ -108,10 +108,25 @@
 }
 
 .contact-icons i:hover {
-  color: #007bff; 
+  color: #0d3c6e; 
   transform: scale(1.2); 
 }
+
 .info-container {
   padding: 20px;
+  background-color: #dee8f1;
   text-align: center;
+}
+
+/* Footer section */
+.footer {
+  margin-top: auto; /* Pushes footer to the bottom */
+  text-align: center;
+  width: 100%; /* Full width */
+}
+
+.footer-image {
+  width: 100%;
+  height: auto;
+  display: block; /* Ensure it's displayed as a block element */
 }

@@ -17,4 +17,5 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ALGSAT_A83D3 }}
           channelId: live
-          projectId: algsat-a83d3
+          projectId: algsat-dc6bc
+

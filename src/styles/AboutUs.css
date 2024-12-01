@@ -1,0 +1,122 @@
+body {
+    background-color: #dee8f1;
+  }
+  
+
+.header-bar {
+    display: flex;
+    align-items: center;
+    padding: 16px 10px;
+    background-color: #044573;
+    color: white;
+    max-width: 100%;
+    box-sizing: border-box;
+    justify-content: flex-start; 
+}
+  
+.header-logo {
+    width: 40px; 
+    margin-right: 10px;
+}
+  
+.header-bar h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    text-align: left; 
+}
+  
+.menu {
+    display: flex;
+    justify-content: flex-end; 
+    width: 100%; 
+}
+  
+.menu-list {
+    list-style: none;
+    display: flex;
+    margin-right: 10px;
+}
+  
+.menu-list li {
+    display: inline;
+}
+  
+.menu-list li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+  
+.details-section {
+    margin: 10px auto; /* Center the section horizontally and reduce the margin */
+    padding: 10px 20px; /* Add padding for a compact look */
+    text-align: center; /* Center align the text */
+    max-width: 600px; /* Restrict the width for a more compact layout */
+}
+
+.info-section h2 {
+    margin-top: 70px; 
+    text-align: center;
+    font-size: 30px;
+}
+  
+.team-members {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    justify-content: center; /* Center align all team members */
+    gap: 30px;
+    margin-top: 30px;
+}
+  
+.person-container {
+    display: flex;
+    flex-direction: column; /* Stack image and info vertically */
+    align-items: center; /* Center align contents */
+    background-color: #f4f4f9;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Consistent width for all containers */
+}
+  
+.person-container .person-image {
+    margin-bottom: 15px;
+}
+
+.person-container img {
+    width: 150px; /* Fixed width for portrait images */
+    height: 150px; /* Fixed height for uniformity */
+    border-radius: 10%; /* Circular image */
+    object-fit: cover; /* Ensure proper aspect ratio */
+}
+
+.person-container .person-info {
+    text-align: center; /* Center text alignment */
+}
+
+.person-container h2 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.person-container p {
+    font-size: 16px;
+    color: #555;
+}
+/* Footer section */
+.footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    text-align: center;
+    width: 100%; /* Full width */
+    padding-top: 20px; /* Adds space above the image */
+  }
+  
+  .footer-image {
+    width: 100%;
+    height: auto;
+    display: block; /* Ensure it's displayed as a block element */
+    margin-top: 20px; /* Adds space above the image */
+  }
+  

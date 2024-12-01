@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../styles/HomePage.css';
 import logo from '../assets/Logo.png';
 import Lake from '../assets/Lake.png';
+import FooterImage from '../assets/LagunaLake.png';  // Make sure to import your bottom image
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function HomePage() {
   const [menuOpen] = useState(false);
@@ -63,6 +65,11 @@ function HomePage() {
           challenges, particularly in water quality monitoring and management.
         </p>
       </div>
+
+      {/* Footer section */}
+      <footer className="footer">
+        <img src={FooterImage} alt="Laguna Lake view" className="footer-image" />
+      </footer>
     </div>
   );
 }
